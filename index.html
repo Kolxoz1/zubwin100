@@ -3,94 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZUBWIN100</title>
+<title>My Landing</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-html,
 body{
-height:100%;
-overflow:hidden;
+background:#050505;
 font-family:Arial,sans-serif;
-background:#000;
+color:white;
+text-align:center;
 }
 
 .hero{
 position:relative;
-width:100%;
-height:100vh;
-overflow:hidden;
 }
 
 .hero img{
 width:100%;
-height:100%;
-object-fit:cover;
 display:block;
 }
 
-.overlay{
+.hero::after{
+content:"";
 position:absolute;
 left:0;
 right:0;
-bottom:40px;
-display:flex;
-justify-content:center;
-padding:0 20px;
+bottom:0;
+height:120px;
+background:linear-gradient(to bottom,rgba(0,0,0,0),#050505);
+}
+
+.container{
+max-width:760px;
+margin:auto;
+padding:0 20px 40px;
+margin-top:-50px;
+position:relative;
+z-index:10;
 }
 
 .btn{
-display:flex;
-align-items:center;
-justify-content:center;
+display:block;
 width:100%;
-max-width:600px;
-height:80px;
-text-decoration:none;
-font-size:34px;
+padding:24px;
+font-size:32px;
 font-weight:700;
+text-decoration:none;
 color:white;
-border-radius:20px;
-background:linear-gradient(135deg,#16a34a,#22c55e);
-box-shadow:0 0 40px rgba(34,197,94,.5);
-backdrop-filter:blur(10px);
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+border-radius:22px;
+box-shadow:0 15px 40px rgba(59,130,246,.3);
 }
 
-.btn:hover{
-transform:scale(1.02);
+.info{
+margin-top:20px;
+background:#0f172a;
+border-radius:20px;
+padding:25px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.label{
+font-size:14px;
+letter-spacing:2px;
+color:#94a3b8;
+margin-bottom:10px;
+}
+
+.code{
+font-size:42px;
+font-weight:900;
+}
+
+.copy{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+font-weight:700;
+}
+
+.footer{
+margin-top:30px;
+color:#777;
+font-size:14px;
 }
 
 @media(max-width:768px){
+.code{
+font-size:32px;
+}
 
 .btn{
 font-size:24px;
-height:70px;
+padding:18px;
 }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <div class="hero">
-
 <img src="header.jpg" alt="">
+</div>
 
-<div class="overlay">
-<a class="btn" href="https://one-vv3850.com/casino/list?open=register&p=0ned">
-🎁 ПОЛУЧИТЬ БОНУС
+<div class="container">
+
+<a class="btn" href="#">
+🚀 Открыть страницу
 </a>
+
+<div class="info">
+<div class="label">КОД</div>
+<div class="code" id="code">ACCESS2026</div>
+
+<button class="copy" onclick="copyCode()">
+Скопировать код
+</button>
+</div>
+
+<div class="footer">
+© 2026
 </div>
 
 </div>
+
+<script>
+function copyCode(){
+navigator.clipboard.writeText(
+document.getElementById('code').innerText
+);
+alert('Код скопирован');
+}
+</script>
 
 </body>
 </html>
