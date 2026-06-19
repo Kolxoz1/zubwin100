@@ -87,9 +87,9 @@
   .hero {
     position: relative;
     width: 100%;
-    height: 62vh;
-    min-height: 360px;
-    max-height: 720px;
+    aspect-ratio: 16 / 9;
+    min-height: 380px;
+    max-height: 760px;
     overflow: hidden;
   }
 
@@ -97,18 +97,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 50% 30%;
     display: block;
-    filter: brightness(0.78) saturate(1.05);
-    transform: scale(1.02);
+    filter: brightness(0.82) saturate(1.05);
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(5,6,10,0.15) 0%, rgba(5,6,10,0.35) 55%, var(--bg-black) 100%),
-      linear-gradient(90deg, rgba(5,6,10,0.45) 0%, transparent 40%, transparent 60%, rgba(5,6,10,0.45) 100%);
+      linear-gradient(180deg, rgba(5,6,10,0.08) 0%, rgba(5,6,10,0.22) 55%, var(--bg-black) 100%),
+      linear-gradient(90deg, rgba(5,6,10,0.30) 0%, transparent 35%, transparent 65%, rgba(5,6,10,0.30) 100%);
     pointer-events: none;
   }
 
@@ -131,6 +130,8 @@
     text-transform: uppercase;
     color: var(--gold-strong);
     box-shadow: 0 0 20px rgba(243, 201, 105, 0.15);
+    z-index: 2;
+    white-space: nowrap;
   }
 
   .hero-label .dot {
@@ -140,6 +141,43 @@
     background: var(--neon-blue-strong);
     box-shadow: 0 0 10px var(--neon-blue-strong), 0 0 20px var(--neon-blue-strong);
     animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+
+  /* Headline overlay rendered in HTML/CSS so it never depends on the
+     source image and never gets cropped on any screen size */
+  .hero-headline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 58%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    padding: 90px 20px 0;
+    pointer-events: none;
+  }
+
+  .hero-headline .line {
+    font-size: clamp(2.1rem, 6vw, 4.6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    text-shadow: 0 0 24px rgba(0,0,0,0.65), 0 4px 18px rgba(0,0,0,0.5);
+    margin: 0;
+  }
+
+  .hero-headline .line.accent {
+    background: linear-gradient(90deg, var(--gold-strong), var(--neon-blue-strong));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 22px rgba(243, 201, 105, 0.45));
   }
 
   @keyframes pulse-dot {
@@ -675,7 +713,29 @@
   }
 
   /* ======================= RESPONSIVE ======================= */
+  /* ======================= DESKTOP LARGE (>= 1400px) ======================= */
+  @media (min-width: 1400px) {
+    .hero {
+      max-height: 680px;
+    }
+    .hero-headline {
+      padding-top: 76px;
+    }
+  }
+
   @media (max-width: 880px) {
+    .hero {
+      aspect-ratio: 4 / 3;
+      min-height: 420px;
+      max-height: none;
+    }
+    .hero img {
+      object-position: 50% 18%;
+    }
+    .hero-headline {
+      height: 64%;
+      padding-top: 96px;
+    }
     .features-grid {
       grid-template-columns: 1fr;
     }
@@ -687,11 +747,23 @@
 
   @media (max-width: 600px) {
     .hero {
-      height: 46vh;
-      min-height: 280px;
+      aspect-ratio: 3 / 4;
+      min-height: 460px;
     }
-    .float-wrap {
-      margin-top: -70px;
+    .hero img {
+      object-position: 50% 14%;
+    }
+    .hero-headline {
+      height: 60%;
+      padding-top: 84px;
+    }
+    .hero-headline .line {
+      font-size: clamp(1.8rem, 8.5vw, 2.6rem);
+    }
+    .hero-label {
+      top: 20px;
+      font-size: 0.7rem;
+      padding: 8px 16px;
     }
     .telegram-wrap {
       margin-top: -50px;
