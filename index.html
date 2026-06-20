@@ -148,33 +148,35 @@
     50% { opacity: 0.5; transform: scale(1.3); }
   }
 
-  /* ======================= TELEGRAM BLOCK (standalone) ======================= */
+  /* ======================= TELEGRAM CORNER BADGE ======================= */
   .telegram-block {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
     display: flex;
     align-items: center;
-    gap: 14px;
-    width: 100%;
-    max-width: 420px;
-    margin: 20px auto;            /* по центру, отступ сверху и снизу 20px */
-    padding: 16px 20px;
+    gap: 10px;
+    max-width: 300px;
+    padding: 9px 12px;
     background: var(--glass-bg);
     border: 1.5px solid rgba(61, 169, 252, 0.4);
-    border-radius: var(--radius-md);
+    border-radius: 999px;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4), 0 0 18px rgba(61, 169, 252, 0.12);
-    transition: box-shadow var(--transition-mid), border-color var(--transition-mid);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(61, 169, 252, 0.1);
+    transition: box-shadow var(--transition-mid), border-color var(--transition-mid), transform var(--transition-fast);
   }
 
   .telegram-block:hover {
     border-color: rgba(61, 169, 252, 0.7);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), 0 0 30px rgba(61, 169, 252, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 28px rgba(61, 169, 252, 0.35);
   }
 
   .telegram-block-icon {
     flex: 0 0 auto;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,53 +185,54 @@
   }
 
   .telegram-block-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     color: var(--neon-blue-strong);
     filter: drop-shadow(0 0 6px rgba(61, 169, 252, 0.6));
   }
 
   .telegram-block-text {
-    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    line-height: 1.25;
+    line-height: 1.2;
   }
 
   .telegram-block-title {
-    font-size: 0.98rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-main);
+    white-space: nowrap;
   }
 
   .telegram-block-sub {
-    font-size: 0.78rem;
+    font-size: 0.64rem;
     color: var(--text-muted);
+    white-space: nowrap;
   }
 
   .telegram-block-go {
     flex: 0 0 auto;
-    padding: 9px 18px;
+    padding: 7px 14px;
     border-radius: 999px;
     background: linear-gradient(135deg, var(--neon-blue), #1f6fd1);
     color: #051022;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     white-space: nowrap;
-    box-shadow: 0 6px 18px rgba(61, 169, 252, 0.3);
+    box-shadow: 0 6px 16px rgba(61, 169, 252, 0.28);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   }
 
   /* hover: лёгкое усиление свечения + увеличение кнопки */
   .telegram-block:hover .telegram-block-go {
     transform: scale(1.02);
-    box-shadow: 0 8px 22px rgba(61, 169, 252, 0.45);
+    box-shadow: 0 8px 20px rgba(61, 169, 252, 0.42);
   }
 
   /* ======================= TRUST BADGES ======================= */
   .trust-badges {
-    margin-top: 24px;
-    padding-top: 20px;
+    margin-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
@@ -263,7 +266,7 @@
   /* ======================= FLOATING CARD ======================= */
   .float-wrap {
     position: relative;
-    margin-top: 0;
+    margin-top: -120px;
     z-index: 5;
   }
 
@@ -297,7 +300,7 @@
   }
 
   .promo-card {
-    padding: 44px 36px 38px;
+    padding: 30px 36px 26px;
     text-align: center;
   }
 
@@ -309,14 +312,14 @@
     background-clip: text;
     color: transparent;
     letter-spacing: 0.01em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .promo-subtitle {
     color: var(--text-muted);
     font-size: clamp(0.92rem, 2vw, 1.05rem);
-    margin-bottom: 30px;
-    line-height: 1.5;
+    margin-bottom: 20px;
+    line-height: 1.45;
   }
 
   .code-box {
@@ -410,13 +413,13 @@
   /* ======================= MAIN CTA ======================= */
   .cta-section {
     text-align: center;
-    padding: 70px 24px 60px;
+    padding: 14px 24px 44px;
   }
 
   .cta-eyebrow {
     color: var(--text-muted);
     font-size: 0.95rem;
-    margin-bottom: 22px;
+    margin-bottom: 8px;
   }
 
   .cta-btn {
@@ -687,18 +690,19 @@
       padding: 9px 18px;
     }
 
-    /* --- Telegram блок: 90% ширины, до 360px, по центру --- */
+    /* --- Telegram бейдж: правый верхний угол, только иконка (не перекрывает EXCLUSIVE OFFER) --- */
     .telegram-block {
-      width: 90%;
-      max-width: 360px;
-      padding: 14px 16px;
-      gap: 11px;
+      top: 16px;
+      right: 14px;
+      max-width: none;
+      padding: 8px;
+      gap: 0;
+      border-radius: 50%;
     }
-    .telegram-block-icon { width: 36px; height: 36px; }
-    .telegram-block-icon svg { width: 19px; height: 19px; }
-    .telegram-block-title { font-size: 0.9rem; }
-    .telegram-block-sub { font-size: 0.72rem; }
-    .telegram-block-go { padding: 8px 15px; font-size: 0.84rem; }
+    .telegram-block-icon { width: 30px; height: 30px; }
+    .telegram-block-icon svg { width: 16px; height: 16px; }
+    .telegram-block-text { display: none; }
+    .telegram-block-go { display: none; }
 
     /* --- Hero --- */
     .hero {
@@ -706,9 +710,9 @@
       min-height: 280px;
     }
 
-    /* --- Компактная карточка промокода --- */
+    /* --- Компактная карточка промокода (поднята выше) --- */
     .float-wrap {
-      margin-top: 0;
+      margin-top: -64px;
     }
     .promo-card {
       padding: 18px 18px 14px;
@@ -772,7 +776,7 @@
       justify-content: center;
     }
     .cta-section {
-      padding: 50px 20px 40px;
+      padding: 28px 20px 36px;
     }
     .stats-grid {
       grid-template-columns: 1fr 1fr;
@@ -788,19 +792,17 @@
   <img src="header.jpg" alt="Hero banner">
   <div class="hero-overlay"></div>
   <div class="hero-label"><span class="dot"></span>EXCLUSIVE OFFER</div>
+  <a href="https://t.me/zubwin" target="_blank" rel="noopener" class="telegram-block" id="telegramBadge" data-umami-event="telegram_click">
+    <span class="telegram-block-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.05 3.27c-.32-.27-.78-.34-1.2-.18L2.6 9.86c-.5.19-.83.66-.84 1.19 0 .53.32 1 .82 1.2l4.36 1.74 1.7 5.5c.13.42.46.74.88.85.1.03.21.04.31.04.34 0 .67-.15.9-.42l2.4-2.85 4.36 3.2c.22.16.48.25.74.25.18 0 .36-.04.53-.12.4-.18.68-.55.74-.98L21.94 4.4c.07-.45-.1-.9-.42-1.13zM9.6 14.1l-.7 3.55-1.2-3.88L17.3 6.9 9.6 14.1z"></path></svg>
+    </span>
+    <span class="telegram-block-text">
+      <span class="telegram-block-title">🎁 Telegram</span>
+      <span class="telegram-block-sub">Бонусы и промокоды</span>
+    </span>
+    <span class="telegram-block-go">Получить →</span>
+  </a>
 </section>
-
-<!-- ======================= TELEGRAM BLOCK ======================= -->
-<a href="https://t.me/zubwin" target="_blank" rel="noopener" class="telegram-block reveal" id="telegramBadge" data-umami-event="telegram_click">
-  <span class="telegram-block-icon">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.05 3.27c-.32-.27-.78-.34-1.2-.18L2.6 9.86c-.5.19-.83.66-.84 1.19 0 .53.32 1 .82 1.2l4.36 1.74 1.7 5.5c.13.42.46.74.88.85.1.03.21.04.31.04.34 0 .67-.15.9-.42l2.4-2.85 4.36 3.2c.22.16.48.25.74.25.18 0 .36-.04.53-.12.4-.18.68-.55.74-.98L21.94 4.4c.07-.45-.1-.9-.42-1.13zM9.6 14.1l-.7 3.55-1.2-3.88L17.3 6.9 9.6 14.1z"></path></svg>
-  </span>
-  <span class="telegram-block-text">
-    <span class="telegram-block-title">🎁 Telegram</span>
-    <span class="telegram-block-sub">Бонусы и промокоды</span>
-  </span>
-  <span class="telegram-block-go">Получить →</span>
-</a>
 
 <!-- ======================= FLOATING PROMO CARD ======================= -->
 <div class="container float-wrap reveal" id="promoBlock">
